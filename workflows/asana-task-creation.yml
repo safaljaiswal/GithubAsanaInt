@@ -12,7 +12,7 @@ jobs:
     - name: Create Asana Task
       env:
         ASANA_API_KEY: ${{ secrets.ASANA_API_KEY }}
-        ASANA_PROJECT_ID: YOUR_ASANA_PROJECT_ID
+        ASANA_PROJECT_ID: 1208169954646752
       run: |
         response=$(curl -s -X POST https://app.asana.com/api/1.0/tasks \
         -H "Authorization: Bearer $ASANA_API_KEY" \
