@@ -18,14 +18,10 @@ jobs:
         -H "Authorization: Bearer $ASANA_API_KEY" \
         -H "Content-Type: application/json" \
         -d '{
-              "data": {
-                "workspace": "1208169957145532",
-                "name": "test task",
-                "assignee": "Safal Jaiswal",
-                "assignee_section": "To do",
-                "projects": [
-                  "1208169954646752"
-                ]
+              "projects": "'$ASANA_PROJECT_ID'",
+              "name": "${{ github.event.issue.title }}",
+              "notes": "${{ github.event.issue.body }}",
+              "assignee": "Safal Jaiswal"
             }')
         
         echo "Response from Asana: $response"
