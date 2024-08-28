@@ -1,0 +1,27 @@
+name: Create Asana Task on New GitHub Issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  create-asana-task:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Create Asana Task
+      env:
+        ASANA_API_KEY: ${{ secrets.ASANA_API_KEY }}
+        ASANA_PROJECT_ID: YOUR_ASANA_PROJECT_ID
+      run: |
+        response=$(curl -s -X POST https://app.asana.com/api/1.0/tasks \
+        -H "Authorization: Bearer $ASANA_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+              "projects": "'$ASANA_PROJECT_ID'",
+              "name": "${{ github.event.issue.title }}",
+              "notes": "${{ github.event.issue.body }}",
+              "assignee": "me"
+            }')
+        
+        echo "Response from Asana: $response"
