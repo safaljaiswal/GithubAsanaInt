@@ -1,0 +1,23 @@
+name: Create Asana Task on New GitHub Issue
+
+# Trigger the workflow when a new issue is opened
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  create-asana-task:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Create Asana Task
+      run: |
+        curl -X POST https://app.asana.com/api/1.0/tasks \
+        -H "Authorization: Bearer ${{ secrets.ASANA_API_KEY }}" \
+        -H "Content-Type: application/json" \
+        -d '{
+              "projects": "YOUR_ASANA_PROJECT_ID",
+              "name": "${{ github.event.issue.title }}",
+              "notes": "${{ github.event.issue.body }}",
+              "assignee": "me"
+            }'
