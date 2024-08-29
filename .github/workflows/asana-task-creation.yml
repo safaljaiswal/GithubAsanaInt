@@ -12,6 +12,12 @@ jobs:
     - name: Command to check workspace IDs
       run: |
         curl -H "Authorization: Bearer ${{ secrets.ASANA_API_KEY }}" https://app.asana.com/api/1.0/workspaces
+    - name: Command to check Projeects IDs
+      run: |
+        curl -H "Authorization: Bearer ${{ secrets.ASANA_API_KEY }}" https://app.asana.com/api/1.0/projects
+    - name: Command to check parent IDs
+      run: |
+        curl -H "Authorization: Bearer ${{ secrets.ASANA_API_KEY }}" https://app.asana.com/api/1.0/parent
     - name: Log JSON Payload
       run: |
         echo "{\"projects\": \"1208180556617367\", \"workspace\": \"1208169944374521\", \"name\": \"${{ github.event.issue.title }}\", \"notes\": \"${{ github.event.issue.body }}\", \"assignee\": \"me\"}"
