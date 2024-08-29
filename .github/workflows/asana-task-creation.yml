@@ -11,13 +11,14 @@ jobs:
     steps:
     - name: Create Asana Task
       run: |
-        curl -s -X POST https://app.asana.com/api/1.0/tasks \
-        -H "Authorization: Bearer ${{ secrets.ASANA_API_KEY }}" \
-        -H "Content-Type: application/json" \
-        -d '{
-              "projects": ["1208169954646752"],  # Replace with your actual project ID
-              "name": "${{ github.event.issue.title }}",
-              "notes": "${{ github.event.issue.body }}",
-              "assignee": "me",
-              "workspace": "My workspace"  # Replace with your actual workspace ID
-            }'
+        curl --request POST \
+          --url https://app.asana.com/api/1.0/tasks \
+          --header 'accept: application/json' \
+          --header 'content-type: application/json' \
+          --header "Authorization: Bearer ${{ secrets.ASANA_API_KEY }}" \
+          --data '{
+            "projects": ["1208169944374523"],  # Replace with your actual project ID
+            "name": "${{ github.event.issue.title }}",
+            "notes": "${{ github.event.issue.body }}",
+            "assignee": "me"
+          }'
