@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Log JSON Payload
+      run: |
+        echo "{\"projects\": [\"1208169954646752\"], \"name\": \"${{ github.event.issue.title }}\", \"notes\": \"${{ github.event.issue.body }}\", \"assignee\": \"me\"}"
     - name: Create Asana Task
       run: |
         curl --request POST \
