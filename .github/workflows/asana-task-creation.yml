@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Command to check workspace IDs
+      run: |
+        curl -H "Authorization: Bearer ${{ secrets.ASANA_API_KEY }}" https://app.asana.com/api/1.0/workspaces
     - name: Log JSON Payload
       run: |
         echo "{\"projects\": \"1208180556617367\", \"workspace\": \"1208180152813567\", \"name\": \"${{ github.event.issue.title }}\", \"notes\": \"${{ github.event.issue.body }}\", \"assignee\": \"me\"}"
