@@ -28,4 +28,4 @@ jobs:
           --header 'accept: application/json' \
           --header 'content-type: application/json' \
           --header "Authorization: Bearer ${{ secrets.ASANA_API_KEY }}" \
-          --data "{\"projects\": \"1208180556617367\", \"workspace\": \"1208169944374521\", \"name\": \"${{ github.event.issue.title }}\", \"notes\": \"${{ github.event.issue.body }}\", \"assignee\": \"me\"}"
+          --data "{\"gid\": \"1208180556617367\", \"resource_type\": \"project\", \"name\": \"${{ github.event.issue.title }}\", \"notes\": \"${{ github.event.issue.body }}\", \"assignee\": \"me\"}"
