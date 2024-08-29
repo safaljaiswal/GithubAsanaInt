@@ -14,7 +14,7 @@ jobs:
         curl -H "Authorization: Bearer ${{ secrets.ASANA_API_KEY }}" https://app.asana.com/api/1.0/workspaces
     - name: Log JSON Payload
       run: |
-        echo "{\"projects\": \"1208180556617367\", \"workspace\": \"1208180152813567\", \"name\": \"${{ github.event.issue.title }}\", \"notes\": \"${{ github.event.issue.body }}\", \"assignee\": \"me\"}"
+        echo "{\"projects\": \"1208180556617367\", \"workspace\": \"1208169944374521\", \"name\": \"${{ github.event.issue.title }}\", \"notes\": \"${{ github.event.issue.body }}\", \"assignee\": \"me\"}"
     - name: Create Asana Task
       run: |
         curl --request POST \
@@ -22,4 +22,4 @@ jobs:
           --header 'accept: application/json' \
           --header 'content-type: application/json' \
           --header "Authorization: Bearer ${{ secrets.ASANA_API_KEY }}" \
-          --data "{\"projects\": \"1208180556617367\", \"workspace\": \"1208180152813567\", \"name\": \"${{ github.event.issue.title }}\", \"notes\": \"${{ github.event.issue.body }}\", \"assignee\": \"me\"}"
+          --data "{\"projects\": \"1208180556617367\", \"workspace\": \"1208169944374521\", \"name\": \"${{ github.event.issue.title }}\", \"notes\": \"${{ github.event.issue.body }}\", \"assignee\": \"me\"}"
