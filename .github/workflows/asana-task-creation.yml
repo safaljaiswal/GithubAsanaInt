@@ -22,17 +22,17 @@ jobs:
       run: |
         echo "{\"projects\": \"1208180556617367\", \"workspace\": \"1208169944374521\", \"name\": \"${{ github.event.issue.title }}\", \"notes\": \"${{ github.event.issue.body }}\", \"assignee\": \"me\"}"
     - name: Create Asana Task
-  run: |
-    response=$(curl --request POST \
-      --url https://app.asana.com/api/1.0/tasks \
-      --header 'accept: application/json' \
-      --header 'content-type: application/json' \
-      --header "Authorization: Bearer ${{ secrets.ASANA_API_KEY }}" \
-      --data '{
-        "workspace": "YOUR_WORKSPACE_ID",
-        "project": ["1208180556617367"],
-        "name": "${{ github.event.issue.title }}",
-        "notes": "${{ github.event.issue.body }}",
-        "assignee": "me"
-      }')
-    echo "Response: $response"
+      run: |
+        response=$(curl --request POST \
+        --url https://app.asana.com/api/1.0/tasks \
+        --header 'accept: application/json' \
+        --header 'content-type: application/json' \
+        --header "Authorization: Bearer ${{ secrets.ASANA_API_KEY }}" \
+        --data '{
+          "workspace": "YOUR_WORKSPACE_ID",
+          "project": ["1208180556617367"],
+          "name": "${{ github.event.issue.title }}",
+          "notes": "${{ github.event.issue.body }}",
+          "assignee": "me"
+        }')
+        echo "Response: $response"
