@@ -16,9 +16,4 @@ jobs:
           --header 'accept: application/json' \
           --header 'content-type: application/json' \
           --header "Authorization: Bearer ${{ secrets.ASANA_API_KEY }}" \
-          --data '{
-            "projects": ["1208169944374523"],  # Replace with your actual project ID
-            "name": "${{ github.event.issue.title }}",
-            "notes": "${{ github.event.issue.body }}",
-            "assignee": "me"
-          }'
+          --data "{\"projects\": [\"1208169954646752\"], \"name\": \"${{ github.event.issue.title }}\", \"notes\": \"${{ github.event.issue.body }}\", \"assignee\": \"me\"}"
